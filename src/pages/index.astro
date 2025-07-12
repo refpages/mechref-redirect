@@ -1,0 +1,135 @@
+---
+import Layout from '../layouts/BlankBlankLayout.astro';
+import Section from '../components/Section.astro';
+import SubSection from '../components/SubSection.astro';
+import Searchbar from '../components/Searchbar.astro';
+import CalloutContainer from '../components/CalloutContainer.astro';
+import CalloutCard from '../components/CalloutCard.astro';
+import Image from '../components/Image.astro';
+import Row from '../components/Row.astro';
+import Col from '../components/Col.astro';
+---
+
+<style>
+    :root{
+    --card-size: 180px;
+}
+
+#courses .title-section{
+    margin-top: 1rem;
+}
+
+#courses .title-section h3{
+    font-weight: bold;
+}
+
+ul a{
+    font-size: 1.2rem;
+    color: var(--bs-text-color);
+    transition: font-size linear .2s;
+}
+
+ul a:hover{
+    color: var(--altgeld-orange);
+}
+
+div.grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, var(--card-size));
+    grid-auto-rows: 1fr;
+    gap: 10px;
+    justify-content: center;
+}
+
+.main-cards{
+    padding: .5rem;
+    width: 100%;
+    background-color: #f0f0d0;
+    border: 2px solid var(--bs-border-color); 
+    border-radius: 10px;
+    text-decoration: none;
+    color: black;
+    transition: all linear .1s;
+}
+
+.main-cards a{
+    color: black;
+    text-decoration: none;
+}
+.main-cards p:first-of-type{
+    margin-top: .5rem;
+    margin-bottom: 0;
+
+    font-weight: bold;
+    text-align: center;
+}
+
+.main-cards a div{
+    padding: .5rem; 
+    border-radius: .5rem;
+    height: calc(var(--card-size) - 1rem);
+}
+
+.main-cards:hover{
+    transform: scale(1.05);
+    margin-bottom: .5rem;
+}
+
+.main-cards img{
+    height: calc(var(--card-size) - 1rem);
+    display: block;
+    object-fit: contain;
+    width: 100%;
+    border-radius: .5rem;
+}
+
+.simp-switch{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    margin-left: 2rem;
+}
+
+.simp-btn{
+    margin-right: .5rem;
+}
+
+@media(width >= 768px){
+    ul a:hover{
+        transform: scale(1.05);
+        font-size: 1.17rem;
+    }
+
+    div.grid{
+        justify-content: start;
+    }
+}
+</style>
+
+<Layout title="Moved">
+  <div class="d-flex justify-content-center align-items-center flex-column text-center" style="min-height: 70vh;">
+    <h2>This site has been moved!</h2>
+    <p class="lead">
+      Please visit <a href="https://mech.refpages.org">mech.refpages.org</a> to access the updated reference pages.
+    </p>
+  </div>
+</Layout>
+
+<script is:inline>
+    function proper_ordering(){
+        if (window.innerWidth <= 768){
+            document.querySelector("#courses").classList.add('order-last')
+        }else{
+            document.querySelector("#courses").classList.remove('order-last')
+        }
+    }
+
+    proper_ordering()
+    
+    
+    $(window).on('resize', function(){
+        proper_ordering()
+    })
+</script>
+<script src="/static/js/simplified_view.js" is:inline></script>
+</Layout>
